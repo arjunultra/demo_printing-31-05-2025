@@ -118,29 +118,29 @@ document.addEventListener('DOMContentLoaded', function () {
     observer.observe(statsSection);
   }
 });
-let lastTriggered = 0;
-const cooldown = 2000; // 2 seconds
+// let lastTriggered = 0;
+// const cooldown = 2000; // 2 seconds
 
-const observer = new IntersectionObserver((entries) => {
-  const now = Date.now();
-  entries.forEach(entry => {
-    if (entry.isIntersecting && now - lastTriggered > cooldown) {
-      lastTriggered = now;
+// const observer = new IntersectionObserver((entries) => {
+//   const now = Date.now();
+//   entries.forEach(entry => {
+//     if (entry.isIntersecting && now - lastTriggered > cooldown) {
+//       lastTriggered = now;
 
-      odometerEls.forEach(el => {
-        const target = parseInt(el.getAttribute('data-count'));
-        el.innerHTML = 0;
-        const od = new Odometer({
-          el: el,
-          value: 0,
-          format: '(,ddd)',
-          theme: 'default'
-        });
-        od.update(target);
-      });
-    }
-  });
-}, { threshold: 0.5 });
+//       odometerEls.forEach(el => {
+//         const target = parseInt(el.getAttribute('data-count'));
+//         el.innerHTML = 0;
+//         const od = new Odometer({
+//           el: el,
+//           value: 0,
+//           format: '(,ddd)',
+//           theme: 'default'
+//         });
+//         od.update(target);
+//       });
+//     }
+//   });
+// }, { threshold: 0.5 });
 // brands swiper initialization
 // Initialize Swiper
 // Optimized Swiper Initialization
@@ -288,4 +288,41 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Initialize Wow.js for scroll animations
   new WOW().init();
+});
+// smooth scroll implementation
+// JavaScript Smooth Scroll with adjustable speed
+// Enhanced smooth scroll function with debugging logs
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        
+        // Skip if href is just "#" or empty
+        if (targetId === '#' || targetId === '') {
+            console.log('Empty or # link clicked - no scroll needed');
+            return;
+        }
+        
+        const targetElement = document.querySelector(targetId);
+        if (!targetElement) {
+            console.warn('Target element not found:', targetId);
+            return;
+        }
+        
+        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+        
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+        
+        // Update URL without jumping
+        if (history.pushState) {
+            history.pushState(null, null, targetId);
+        } else {
+            window.location.hash = targetId;
+        }
+    });
 });
