@@ -168,7 +168,6 @@ span {
 .nav-container .nav-shape-container {
   position: relative;
   height: 80px;
-  margin-top: -20px;
 }
 
 .nav-container .nav-shape-bg {
@@ -178,7 +177,7 @@ span {
   width: 100%;
   height: 100%;
   background-color: var(--color-2);
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  /* clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); */
   z-index: -1;
 }
 
@@ -189,7 +188,7 @@ span {
   width: calc(100% - 4px);
   height: calc(100% - 2px);
   background-color: var(--color-2);
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  /* clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); */
   z-index: -1;
 }
 
@@ -212,6 +211,10 @@ span {
   padding: 10px 20px;
   margin: 0 5px;
   position: relative;
+}
+.nav-container .navbar-dark .navbar-nav .nav-link .active {
+  background-color: var(--color-3);
+  color: white;
 }
 
 .nav-container .nav-link-inner {
@@ -289,6 +292,17 @@ span {
   }
 }
 /* updated nav styles */
+.nav-container .navbar-nav .nav-item.active > .nav-link {
+  background-color: var(--color-3);
+  color: #fff;
+  border-radius: 50px;
+}
+/* dropdown highlight */
+.nav-container .dropdown-item.active {
+  background-color: var(--color-1);
+  color: white;
+}
+
 /* dropdown fixes */
 /* Scoped CSS for dropdown fix */
 .main-nav .dropdown-menu {
@@ -557,8 +571,6 @@ span {
     text-align: center;
   }
 }
-/* index swiper */
-/* Index Swiper Section Styles */
 /* Index Swiper Section Styles */
 .index-swiper-section {
   height: 100vh;
@@ -626,26 +638,6 @@ span {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   color: white !important;
 }
-
-/* .index-swiper-section .slide-btn {
-  background: linear-gradient(45deg, var(--color-2), var(--color-3));
-  border: none;
-  color: white !important;
-  padding: 15px 40px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 50px;
-  box-shadow: 0 8px 25px rgba(255, 0, 255, 0.3);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  display: inline-block;
-}
-
-.index-swiper-section .slide-btn:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 12px 35px rgba(255, 0, 255, 0.4);
-  background: linear-gradient(45deg, var(--color-1), var(--color-2));
-} */
 
 .index-swiper-section .swiper-pagination {
   bottom: 30px !important;
@@ -721,6 +713,9 @@ span {
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
+  .index-swiper-section {
+    height: 100%;
+  }
   .index-swiper-section .slide-heading {
     font-size: 2.8rem;
   }
@@ -736,6 +731,9 @@ span {
 }
 
 @media (min-width: 1px) and (max-width: 767.98px) {
+  .index-swiper-section {
+    height: 100%;
+  }
   .index-swiper-section .slide-heading {
     font-size: 2.2rem;
     margin-bottom: 1rem;
@@ -822,15 +820,15 @@ span {
 
 .container-section .packaging-icon {
   position: absolute;
-  right: 60px;
-  bottom: -120px;
+  right: 92px;
+  bottom: -131px;
   width: 100px;
   height: 100px;
   line-height: 98px;
   border-radius: 50%;
   text-align: center;
   display: inline-block;
-  background-color: #f8f9fa;
+  background-color: #141716;
   border: 1px solid rgba(16, 16, 16, 0.06);
   box-shadow: 0px 10px 25px rgba(16, 16, 16, 0.07);
   font-size: 24px;
@@ -844,7 +842,6 @@ span {
 
 .container-section .images-column .inner-column {
   position: relative;
-  padding-top: 60px;
 }
 
 .container-section .box-image {
@@ -911,7 +908,6 @@ span {
 .container-section .content-column .inner-column {
   position: relative;
   padding-top: 80px;
-  padding-left: 120px;
 }
 
 .container-section .feature-block {
@@ -944,6 +940,7 @@ span {
   color: #101010;
   font-weight: 600;
   margin-bottom: 10px;
+  font-family: "Tahoma, Geneva, Verdana, sans-serif";
 }
 
 .container-section .feature-block .feature-text {
@@ -1144,12 +1141,12 @@ span {
 
 /* Services Section Background */
 .services-section {
-  background-image: url("../images/index-services-bg.png");
+  background-image: url("../images/black-bg.webp");
   background-color: #1d1729;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+  transition: background-color 0.3s, border-radius 0.3s, opacity 0.3s;
   padding: 5rem 0;
   position: relative;
 }
@@ -1385,8 +1382,8 @@ span {
   }
 
   .services-section .service-cards {
-    padding-top: 3.5rem;
-    gap: 1.8rem;
+    padding-top: unset;
+    gap: unset;
   }
 
   .services-section .service-box {
@@ -3343,7 +3340,7 @@ section.gallery .gallery-banner {
 }
 
 .box-printing-contact .form-container {
-  background: #ffffff;
+  background: transparent;
   border-radius: 25px;
   padding: 50px;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
@@ -3385,7 +3382,9 @@ section.gallery .gallery-banner {
   margin-bottom: 40px;
   position: relative;
 }
-
+.form-container:hover .form-title {
+  color: white;
+}
 .box-printing-contact .form-title::after {
   content: "";
   position: absolute;
@@ -3440,7 +3439,7 @@ section.gallery .gallery-banner {
 }
 
 .box-printing-contact .submit-button {
-  background: linear-gradient(135deg, var(--color-1), var(--color-2));
+  background: black;
   color: #ffffff;
   border: none;
   padding: 18px 40px;
@@ -3604,7 +3603,7 @@ section.gallery .gallery-banner {
 }
 /* hover effects */
 .box-printing-contact .hvr-bounce-to-right {
-  display: block;
+  display: flex;
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
@@ -3946,7 +3945,7 @@ section.gallery .gallery-banner {
   }
 
   .gallery-img-container {
-    height: 220px;
+    height: 100%;
   }
 
   .overlay-content h3 {
@@ -4535,6 +4534,16 @@ section.gallery .gallery-banner {
   }
 }
 /* utility classes */
+/* font family */
+.sans-font {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.monospace-font {
+  font-family: "Courier New", Courier, monospace;
+}
+.serif-font {
+  font-family: "Times New Roman", Times, serif;
+}
 /* colors */
 .text-red {
   color: var(--color-1) !important;
